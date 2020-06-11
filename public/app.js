@@ -17,32 +17,18 @@ function checkRequiredData() {
 }
 
 function sendDataToFreshchat(userinfo) {
-    console.log(getParameterByName('source'));
-    console.log(getParameterByName('fc_user_id'));
-    console.log(userinfo);
-    // var url = 'https://enw2amch0nr7k.x.pipedream.net';
-    var url = 'https://hooks3.freshworks.com/lkk/m8ftSXFMyZeKMqk/6b2DyKwZsaYETcP8QjlI0J+0h4DUmfBTQUVXAA==';
+    var source = getParameterByName('source');
     var payload = {
         "user_id": getParameterByName('fc_user_id'),
-        "user_info": userinfo
+        "user_info": userinfo,
+        "source": source
     };
-
-    // axios.post('https://enw2amch0nr7k.x.pipedream.net' {
-    //     "method": "POST",
-    //     "url": "",
-    //     "headers": {
-    //         "Content-Type": "application/json; charset=utf-8"
-    //     },
-    //     "data": {
-    //         "user_id": getParameterByName('fc_user_id'),
-    //         "user_info": userinfo
-    //     }
-    // });
-    axios.post(url, payload).then(function (response) {
-        console.log(response);
-    }).catch(function (error) {
-        console.log(error);
-    });
+    if (source === 'mobile') {
+        freshchatWebkitPostMessage();
+    }
+    else {
+        $.post('/email', payload);
+    }
 }
 
 function getParameterByName(name, url) {
@@ -114,7 +100,7 @@ function phonenumber(inputtxt) {
     }
 }
 
-function submitData() {
+function freshchatWebkitPostMessage() {
     window.webkit.messageHandlers.freshchatSetProperties.postMessage({ "First Name": jFirst, "Last Name": jLast, "Date of Birth": jDob, "Account Number": jAccNo, "Mobile Number": jMobNo, "Address": jAddress })
     window.webkit.messageHandlers.freshchatCloseScreen.postMessage('Close')
 }
