@@ -50,5 +50,5 @@ app.post('/email', function (req, res) {
 });
 
 app.listen(PORT, function () {
-    console.log('Fieldbook proxy listening on port %s.', PORT);
+    console.log('Freshchat proxy listening on port %s.', PORT);
 });
