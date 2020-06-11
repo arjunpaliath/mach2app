@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Vodafone AU</title>
+        <link rel="icon" href="https://www.vodafone.com.au/cs/static/mm/img/favicon.ico" type="image/x-icon" sizes="16x16">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <meta charset="UTF-8">
+        <meta name="Manual Authentication Form" content="Proof of Concept for VodaAU">
+        <meta name="author" content="ArjunPaliath">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+        <script type="text/javascript" src="app.js">
+            // document.addEventListener('DOMContentLoaded', function () {
+            //     window.webkit.messageHandlers.freshchatSetTitle.postMessage("Additional Details")
+            // }, false);
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="fname">First Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="fname" name="firstname" placeholder="Your first name here.">
+                    </div>
+                    <div class="error hide">First Name cannot be empty</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="lname">Last Name</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="lname" name="lastname" placeholder="Your last name here.">
+                    </div>
+                    <div class="error hide">Last Name cannot be empty</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="dob">Date of Birth</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="dob" name="dateOfBirth" placeholder="MM/DD/YYYY">
+                    </div>
+                    <div class="error hide">Date of Birth cannot be empty</div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="mobNo">Mobile Number</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="mobNo" name="mobileNumber" placeholder="9876543210">
+                    </div>
+                    <div class="error hide">Number cannot be empty</div>
+                </div>
+                <div class="row" id="submitButton">
+                    <!-- <input type="submit" value="Submit" onClick="JavaScript:sendDataToFreshchat()"> -->
+                    <input type="submit" value="Submit" onClick="JavaScript:checkRequiredData()">
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
