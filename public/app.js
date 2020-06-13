@@ -1,4 +1,5 @@
-function checkRequiredData() {
+function checkRequiredData(window) {
+    _window = window;
     var jFirst = document.getElementById("fname").value;
     var jLast = document.getElementById("lname").value;
     var jDob = document.getElementById("dob").value;
@@ -8,7 +9,8 @@ function checkRequiredData() {
     }
     else {
         var userinfo = {
-            name: jFirst + ' ' + jLast,
+            fname: jFirst,
+            lname: jLast,
             dob: jDob,
             phone: jMobNo
         };
@@ -64,10 +66,10 @@ function returnToFacebook() {
 
 function closeWebView() {
     console.log('Closing Web View');
-    window.parent.postMessage({
+    _window.parent.postMessage({
         action: "collapse_all",
         isWebViewMessage: true
-    }, "https://wchat.freshchat.com");
+    }, getParameterByName('fc_origin_url'));
 }
 
 function getParameterByName(name, url) {
