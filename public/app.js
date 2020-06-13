@@ -27,8 +27,47 @@ function sendDataToFreshchat(userinfo) {
         freshchatWebkitPostMessage();
     }
     else {
-        $.post('/email', payload);
+        $.post('/email', payload).done(function (resp) {
+            // console.log(resp);
+            redirectToSource(resp, source);
+        }).fail(function (error) {
+            console.log(error);
+        });
     }
+}
+
+function redirectToSource(data, source) {
+    console.log('Source is : ' + source);
+    // t = data;
+    switch (source) {
+        case 'whatsapp':
+            returnToWhatsapp();
+            break;
+        case 'facebook':
+            returnToFacebook();
+            break;
+        case 'web':
+            closeWebView();
+            break;
+    };
+}
+
+function returnToWhatsapp() {
+    console.log('Redirecting to whatsapp');
+    window.location.href="https://api.whatsapp.com/send?phone=+16508668865"
+}
+
+function returnToFacebook() {
+    console.log('Redirecting to facebook');
+    window.location.href="https://www.messenger.com/t/114075629968644"
+}
+
+function closeWebView() {
+    console.log('Closing Web View');
+    window.parent.postMessage({
+        action: "collapse_all",
+        isWebViewMessage: true
+    }, "https://wchat.freshchat.com");
 }
 
 function getParameterByName(name, url) {
