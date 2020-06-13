@@ -6,7 +6,9 @@ var requestify = require('requestify');
 var moment = require('moment');
 
 var PORT = process.env.PORT || 3000;
-var BASE_URL = 'https://hooks3.freshworks.com/lkk/m8ftSXFMyZeKMqk/6b2DyKwZsaYETcP8QjlI0J+0h4DUmfBTQUVXAA==';
+// var BASE_URL = 'https://hooks3.freshworks.com/lkk/m8ftSXFMyZeKMqk/6b2DyKwZsaYETcP8QjlI0J+0h4DUmfBTQUVXAA==';
+var BASE_URL = 'https://enhg710gfqqim.x.pipedream.net';
+
 
 var API_OPTIONS = {
     headers: { accept: 'application/json' }
@@ -31,7 +33,7 @@ app.post('/email', function (req, res) {
     
     // console.log(req.body);
     
-    res.json({ ok: true });
+    // res.json({ ok: true });
     
     var URL = BASE_URL;
 
@@ -43,6 +45,7 @@ app.post('/email', function (req, res) {
 
     requestify.post(URL, record, API_OPTIONS).then(function (fbres) {
         console.log('Success');
+        // res.json(fbres);
         res.json(fbres);
     }).catch(function (err) {
         res.json(err);
