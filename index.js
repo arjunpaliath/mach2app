@@ -23,7 +23,12 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static(__dirname + '/public'));
+
 app.get('/', function (request, response) {
+    response.sendFile('./public/home.html', { root: __dirname });
+});
+
+app.get('/help', function (request, response) {
     response.sendFile('./public/auth_form.html', { root: __dirname });
 });
 
