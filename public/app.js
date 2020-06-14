@@ -21,6 +21,7 @@ function sendDataToFreshchat(userinfo) {
     var source = getParameterByName('source');
     var payload = {
         "user_id": getParameterByName('fc_user_id'),
+        "conv_id": getParameterByName('fc_conv_id'),
         "user_info": userinfo,
         "source": source
     };
@@ -65,7 +66,7 @@ function returnToFacebook() {
 
 function closeWebView() {
     console.log('Closing Web View');
-    _window.parent.postMessage({
+    window.parent.postMessage({
         action: "collapse_all",
         isWebViewMessage: true
     }, getParameterByName('fc_origin_url'));
