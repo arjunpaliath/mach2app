@@ -1,5 +1,4 @@
-function checkRequiredData(window) {
-    _window = window;
+function checkRequiredData() {
     var jFirst = document.getElementById("fname").value;
     var jLast = document.getElementById("lname").value;
     var jDob = document.getElementById("dob").value;
