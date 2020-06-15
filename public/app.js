@@ -8,7 +8,8 @@ function checkRequiredData() {
     }
     else {
         var userinfo = {
-            name: jFirst + ' ' + jLast,
+            fname: jFirst,
+            lname: jLast,
             dob: jDob,
             phone: jMobNo
         };
@@ -20,6 +21,7 @@ function sendDataToFreshchat(userinfo) {
     var source = getParameterByName('source');
     var payload = {
         "user_id": getParameterByName('fc_user_id'),
+        "conv_id": getParameterByName('fc_conv_id'),
         "user_info": userinfo,
         "source": source
     };
@@ -67,7 +69,7 @@ function closeWebView() {
     window.parent.postMessage({
         action: "collapse_all",
         isWebViewMessage: true
-    }, "https://wchat.freshchat.com");
+    }, getParameterByName('fc_origin_url'));
 }
 
 function getParameterByName(name, url) {
