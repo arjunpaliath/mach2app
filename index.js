@@ -6,7 +6,7 @@ var requestify = require('requestify');
 var moment = require('moment');
 
 var PORT = process.env.PORT || 3000;
-var BASE_URL = 'https://hooks.freshworks.com/1D370FmbsTpqkpjgYEnv/crl9wwBIwbvtio2IJd6vuTyTqcUYTIzyKW2';
+var BASE_URL = 'https://hooks.freshworks.com/1D370FmbsTpqkpjgYEnv/crl9wwBIwbvtio/LJB4vuTyTqcUYTIzyKW2';
 // var BASE_URL = 'https://enhg710gfqqim.x.pipedream.net';
 
 
